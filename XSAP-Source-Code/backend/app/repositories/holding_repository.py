@@ -22,28 +22,63 @@ class HoldingRepository:
         stock_symbol
     ):
 
-        docs = db.collection(
-            "holdings"
-        ).where(
-            "portfolio_id",
-            "==",
-            portfolio_id
-        ).where(
-            "stock_symbol",
-            "==",
-            stock_symbol
-        ).stream()
+        docs = (
+            db.collection(
+                "holdings"
+            )
+            .where(
+                "portfolio_id",
+                "==",
+                portfolio_id
+            )
+            .where(
+                "stock_symbol",
+                "==",
+                stock_symbol
+            )
+            .stream()
+        )
 
         for doc in docs:
 
             holding = doc.to_dict()
 
-            if "holding_id" not in holding:
-                holding["holding_id"] = doc.id
+            holding["holding_id"] = doc.id
 
             return holding
 
         return None
+
+    @staticmethod
+    def get_portfolio_holdings(
+        portfolio_id
+    ):
+
+        docs = (
+            db.collection(
+                "holdings"
+            )
+            .where(
+                "portfolio_id",
+                "==",
+                portfolio_id
+            )
+            .stream()
+        )
+
+        holdings = []
+
+        for doc in docs:
+
+            holding = doc.to_dict()
+
+            holding["holding_id"] = doc.id
+
+            holdings.append(
+                holding
+            )
+
+        return holdings
 
     @staticmethod
     def update_holding(
@@ -60,6 +95,22 @@ class HoldingRepository:
         return True
 
     @staticmethod
+    def delete_holding(
+        holding_id
+    ):
+
+        db.collection(
+            "holdings"
+        ).document(
+            holding_id
+        ).delete()
+
+        return {
+            "message":
+            "Holding deleted successfully"
+        }
+
+    @staticmethod
     def get_all_holdings():
 
         docs = db.collection(
@@ -71,8 +122,11 @@ class HoldingRepository:
         for doc in docs:
 
             holding = doc.to_dict()
+
             holding["holding_id"] = doc.id
 
-            holdings.append(holding)
+            holdings.append(
+                holding
+            )
 
         return holdings
