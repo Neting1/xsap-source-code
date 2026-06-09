@@ -13,6 +13,7 @@ from app.api.v1.watchlist import (router as watchlist_router)
 from app.api.v1.market import (router as market_router)
 from app.api.v1.live_portfolio import (router as live_portfolio_router)
 from app.api.v1.alerts import (router as alerts_router)
+from app.api.v1.notifications import (router as notifications_router)
 
 
 app = FastAPI(
@@ -47,6 +48,8 @@ app.include_router(market_router,prefix="/api/v1")
 app.include_router(live_portfolio_router,prefix="/api/v1")
 # Alerts
 app.include_router(alerts_router,prefix="/api/v1")
+# Notifications
+app.include_router(notifications_router)
 
 
 
