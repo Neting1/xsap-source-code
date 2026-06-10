@@ -7,34 +7,49 @@ from app.services.providers.base_provider import (
 
 class GSEProvider(MarketDataProvider):
 
-    BASE_URL = (
-        "https://dev.kwayisi.org/apis/gse"
-    )
+    BASE_URL = "https://dev.kwayisi.org/apis/gse"
 
     def get_stock(
         self,
-        symbol
+        symbol: str
     ):
 
-        response = requests.get(
-            f"{self.BASE_URL}/equities/{symbol}"
-        )
+        try:
 
-        if response.status_code == 200:
-            return response.json()
+            response = requests.get(
+                f"{self.BASE_URL}/live/{symbol}",
+                timeout=10
+            )
 
-        return {
-            "error":
-            f"Unable to fetch {symbol}"
-        }
+            if response.status_code == 200:
+                return response.json()
+
+            return {
+                "error":
+                f"Unable to fetch stock {symbol}"
+            }
+
+        except Exception as e:
+
+            return {
+                "error":
+                str(e)
+            }
 
     def get_all_stocks(self):
 
-        response = requests.get(
-            f"{self.BASE_URL}/equities"
-        )
+        try:
 
-        if response.status_code == 200:
-            return response.json()
+            response = requests.get(
+                f"{self.BASE_URL}/live",
+                timeout=10
+            )
 
-        return []
+            if response.status_code == 200:
+                return response.json()
+
+            return []
+
+        except Exception:
+
+            return []
