@@ -1,2 +1,3 @@
 from .dashboard import (InvestorDashboardResponse)
-from .allocation import (AllocationItem,AllocationResponse)
+from .allocation import (AllocationItem, AllocationResponse)
+

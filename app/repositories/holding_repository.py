@@ -42,7 +42,6 @@ class HoldingRepository:
         for doc in docs:
 
             holding = doc.to_dict()
-
             holding["holding_id"] = doc.id
 
             return holding
@@ -71,7 +70,6 @@ class HoldingRepository:
         for doc in docs:
 
             holding = doc.to_dict()
-
             holding["holding_id"] = doc.id
 
             holdings.append(
@@ -122,7 +120,6 @@ class HoldingRepository:
         for doc in docs:
 
             holding = doc.to_dict()
-
             holding["holding_id"] = doc.id
 
             holdings.append(

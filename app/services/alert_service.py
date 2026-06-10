@@ -4,6 +4,10 @@ from app.repositories.alert_repository import (
     AlertRepository
 )
 
+from app.services.notification_service import (
+    NotificationService
+)
+
 from app.services.providers.gse_provider import (
     GSEProvider
 )
@@ -89,9 +93,10 @@ class AlertService:
                 alert["target_price"]
             )
 
-            condition = alert[
-                "condition"
-            ].lower()
+            condition = (
+                alert["condition"]
+                .lower()
+            )
 
             should_trigger = False
 
@@ -115,17 +120,37 @@ class AlertService:
                     alert["alert_id"],
                     {
                         "status":
-                        "triggered",
+                            "triggered",
 
                         "triggered":
-                        True,
+                            True,
 
                         "triggered_at":
-                        datetime.utcnow()
-                        .isoformat(),
+                            datetime.utcnow()
+                            .isoformat(),
 
                         "current_price":
-                        current_price
+                            current_price
+                    }
+                )
+
+                NotificationService.create_notification(
+                    {
+                        "user_id":
+                            alert["user_id"],
+
+                        "title":
+                            "Price Alert Triggered",
+
+                        "message":
+                            (
+                                f"{alert['stock_symbol']} "
+                                f"has reached "
+                                f"GHS {current_price}"
+                            ),
+
+                        "type":
+                            "price_alert"
                     }
                 )
 
@@ -133,8 +158,8 @@ class AlertService:
 
         return {
             "alerts_checked":
-            checked,
+                checked,
 
             "alerts_triggered":
-            triggered
+                triggered
         }

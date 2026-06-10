@@ -1,3 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
 # Logs
 logs
 *.log
@@ -12,20 +27,21 @@ dist
 dist-ssr
 *.local
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+# OS files
 .DS_Store
+Thumbs.db
+
+# Firebase
+firebase/serviceAccountKey.json
+firebase/*.json
+
+# Environment files
+.env
+.env.*
+
+# Windows Visual Studio files
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-
-.env
-firebase/serviceAccountKey.json
-backend/firebase/serviceAccountKey.json
-
-__pycache__/
-*.pyc
