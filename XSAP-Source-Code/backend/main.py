@@ -18,6 +18,7 @@ from app.api.v1.email import (router as email_router)
 
 
 
+
 app = FastAPI(
     title="Xeonsys Stock Analytics Platform",
     version="1.0.0"
@@ -54,6 +55,7 @@ app.include_router(alerts_router,prefix="/api/v1")
 app.include_router(notifications_router)
 # Email
 app.include_router(email_router)
+
 
 
 
