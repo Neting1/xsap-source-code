@@ -10,6 +10,8 @@ class Settings(BaseSettings):
     VERSION: str = "1.0.0"
 
     SECRET_KEY: str
+    
+    ALGORITHM: str = "HS256"
 
     FIREBASE_API_KEY: str
 

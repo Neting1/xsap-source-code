@@ -9,7 +9,6 @@ router = APIRouter(
     tags=["Analytics"]
 )
 
-
 @router.get(
     "/portfolio/{portfolio_id}"
 )

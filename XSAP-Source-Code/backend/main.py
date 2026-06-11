@@ -5,6 +5,7 @@ from app.api.v1.admin import (router as admin_router)
 from app.api.v1.investors import (router as investor_router)
 from app.api.v1.portfolio import (router as portfolio_router)
 from app.api.v1.stocks import (router as stocks_router)
+from app.api.v1.holdings import (router as holdings_router)
 from app.api.v1.transactions import (router as transaction_router)
 from app.api.v1.analytics import (router as analytics_router)
 from app.api.v1.dashboard import (router as dashboard_router)
@@ -15,6 +16,7 @@ from app.api.v1.live_portfolio import (router as live_portfolio_router)
 from app.api.v1.alerts import (router as alerts_router)
 from app.api.v1.notifications import (router as notifications_router)
 from app.api.v1.email import (router as email_router)
+from app.api.v1.analytics import (router as analytics_router)
 
 
 
@@ -55,9 +57,10 @@ app.include_router(alerts_router,prefix="/api/v1")
 app.include_router(notifications_router)
 # Email
 app.include_router(email_router)
-
-
-
+# Analytics
+app.include_router(analytics_router,prefix="/api/v1")
+# Holdings
+app.include_router(holdings_router,prefix="/api/v1")
 
 
 
