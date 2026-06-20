@@ -50,11 +50,9 @@ def login_user(
     if not firebase_user:
         return None
 
-    token = create_access_token(
+    return create_access_token(
         {
             "sub": email,
             "uid": firebase_user["localId"]
         }
     )
-
-    return token

@@ -16,7 +16,7 @@ from app.api.v1.live_portfolio import (router as live_portfolio_router)
 from app.api.v1.alerts import (router as alerts_router)
 from app.api.v1.notifications import (router as notifications_router)
 from app.api.v1.email import (router as email_router)
-from app.api.v1.analytics import (router as analytics_router)
+
 
 
 
@@ -57,8 +57,6 @@ app.include_router(alerts_router,prefix="/api/v1")
 app.include_router(notifications_router)
 # Email
 app.include_router(email_router)
-# Analytics
-app.include_router(analytics_router,prefix="/api/v1")
 # Holdings
 app.include_router(holdings_router,prefix="/api/v1")
 

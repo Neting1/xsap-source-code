@@ -17,7 +17,7 @@ class GSEProvider(MarketDataProvider):
     ):
 
         response = requests.get(
-            f"{self.BASE_URL}/equities/{symbol}"
+            f"{self.BASE_URL}/live/{symbol}"
         )
 
         if response.status_code == 200:
@@ -31,7 +31,7 @@ class GSEProvider(MarketDataProvider):
     def get_all_stocks(self):
 
         response = requests.get(
-            f"{self.BASE_URL}/equities"
+            f"{self.BASE_URL}/live"
         )
 
         if response.status_code == 200:

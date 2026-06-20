@@ -10,12 +10,12 @@ class Settings(BaseSettings):
     VERSION: str = "1.0.0"
 
     SECRET_KEY: str
-    
+
     ALGORITHM: str = "HS256"
 
-    FIREBASE_API_KEY: str
-
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+
+    FIREBASE_API_KEY: str
 
     FIREBASE_CREDENTIALS: str
 
@@ -32,8 +32,8 @@ class Settings(BaseSettings):
     )
 
     class Config:
-
         env_file = ".env"
+        extra = "ignore"
 
 
 settings = Settings()

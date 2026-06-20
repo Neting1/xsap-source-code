@@ -8,23 +8,29 @@ def firebase_sign_in(
     password: str
 ):
 
-    url = (
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword"
-        f"?key={settings.FIREBASE_API_KEY}"
-    )
+    try:
 
-    payload = {
-        "email": email,
-        "password": password,
-        "returnSecureToken": True
-    }
+        url = (
+            "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword"
+            f"?key={settings.FIREBASE_API_KEY}"
+        )
 
-    response = requests.post(
-        url,
-        json=payload
-    )
+        payload = {
+            "email": email,
+            "password": password,
+            "returnSecureToken": True
+        }
 
-    if response.status_code == 200:
-        return response.json()
+        response = requests.post(
+            url,
+            json=payload,
+            timeout=10
+        )
 
-    return None
+        if response.status_code == 200:
+            return response.json()
+
+        return None
+
+    except Exception:
+        return None
