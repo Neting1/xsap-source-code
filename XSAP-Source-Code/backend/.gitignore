@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# OS files
+.DS_Store
+<<<<<<< HEAD
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Firebase Credentials
+firebase/serviceAccountKey.json
+
+# Environment variables
+.env
+=======
+Thumbs.db
+
+
+# Firebase
+firebase/serviceAccountKey.json
+firebase/*.json
+
+# Environment files
+.env
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+>>>>>>> develop
